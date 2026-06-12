@@ -275,8 +275,18 @@ window.fbLoadTop10 = async () => {
   const snap = await get(ref(db, 'scores'));
   if (!snap.exists()) return [];
   const rows = Object.values(snap.val());
-  rows.sort((a, b) => b.score - a.score);
-  return rows.slice(0, 10);
+
+  // 닉네임당 최고 기록만 남기기
+  const best = {};
+  rows.forEach(r => {
+    if (!best[r.name] || r.score > best[r.name].score) {
+      best[r.name] = r;
+    }
+  });
+
+  return Object.values(best)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10);
 };
 </script>
 
