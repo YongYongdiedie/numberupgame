@@ -183,6 +183,11 @@ body {
 
 #lb-loading { text-align: center; padding: 1.5rem 0; font-size: 14px; color: var(--text2); }
 .result-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem; }
+#credit {
+  position: fixed; bottom: 14px; right: 16px;
+  font-size: 11px; color: var(--text2); opacity: 0.6;
+  pointer-events: none; z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -507,5 +512,6 @@ $('btn-again').addEventListener('click', () => {
 });
 $('btn-new').addEventListener('click', () => { showNick(); });
 </script>
+<div id="credit">제작: 2026KISHYONGT</div>
 </body>
 </html>
